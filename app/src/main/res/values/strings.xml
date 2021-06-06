@@ -15,6 +15,7 @@
     <string name="save">Save</string>
     <string name="delete">Delete</string>
 
+<!--    For Spinner Values we have to use String Array!-->
     <string-array name="priorities">
         <item>High Priority</item>
         <item>Medium Priority</item>
