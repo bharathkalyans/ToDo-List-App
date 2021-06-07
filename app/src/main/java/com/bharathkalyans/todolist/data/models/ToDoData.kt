@@ -1,4 +1,4 @@
-package com.bharathkalyans.todolist.data
+package com.bharathkalyans.todolist.data.models
 
 
 import androidx.room.Entity

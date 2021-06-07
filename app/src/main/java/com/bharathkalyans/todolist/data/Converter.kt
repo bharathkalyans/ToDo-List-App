@@ -1,6 +1,7 @@
 package com.bharathkalyans.todolist.data
 
 import androidx.room.TypeConverter
+import com.bharathkalyans.todolist.data.models.Priority
 
 class Converter {
 
