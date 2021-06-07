@@ -11,6 +11,7 @@ import com.bharathkalyans.todolist.R
 import com.bharathkalyans.todolist.data.models.Priority
 import com.bharathkalyans.todolist.data.models.ToDoData
 import com.bharathkalyans.todolist.data.viewmodel.ToDoViewModel
+import com.bharathkalyans.todolist.fragments.SharedViewModel
 import kotlinx.android.synthetic.main.fragment_add.*
 
 
@@ -18,6 +19,8 @@ class AddFragment : Fragment() {
 
     //View Model
     private val mToDoViewModel: ToDoViewModel by viewModels()
+    private val mSharedViewModel: SharedViewModel by viewModels()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,14 +53,14 @@ class AddFragment : Fragment() {
         val mPriority = priorities_spinner.selectedItem.toString()
         val mDescription = description_et.text.toString()
 
-        val validation = inputVerifyFromUser(mTitle, mDescription)
+        val validation = mSharedViewModel.inputVerifyFromUser(mTitle, mDescription)
 
         if (validation) {
             //Inserting data to the Database as Input  user passes the safe check!
             val newData = ToDoData(
                 0,
                 mTitle,
-                parsePriority(mPriority),
+                mSharedViewModel.parsePriority(mPriority),
                 mDescription
             )
             mToDoViewModel.insertData(newData)
@@ -68,32 +71,6 @@ class AddFragment : Fragment() {
             Toast.makeText(requireContext(), "Fill Out All Fields!", Toast.LENGTH_SHORT).show()
         }
 
-    }
-
-    private fun parsePriority(priority: String): Priority {
-        return when (priority) {
-            "High Priority" -> {
-                Priority.HIGH
-            }
-            "Medium Priority" -> {
-                Priority.MEDIUM
-            }
-            "Low Priority" -> {
-                Priority.LOW
-            }
-            else -> {
-                Priority.LOW
-            }
-        }
-    }
-
-    private fun inputVerifyFromUser(
-        title: String,
-        description: String
-    ): Boolean {
-        return if (TextUtils.isEmpty(title) || TextUtils.isEmpty(description)) {
-            false
-        } else !(title.isEmpty() || description.isEmpty())
     }
 
 
