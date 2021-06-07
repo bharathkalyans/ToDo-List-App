@@ -1,0 +1,15 @@
+package com.bharathkalyans.todolist.data
+
+
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+//This will be our Model Class which will hold data!
+@Entity(tableName = "todo_table")
+data class ToDoData(
+    @PrimaryKey(autoGenerate = true)
+    var id: Int,
+    var title: String,
+    var priority: Priority,
+    var description: String
+)
