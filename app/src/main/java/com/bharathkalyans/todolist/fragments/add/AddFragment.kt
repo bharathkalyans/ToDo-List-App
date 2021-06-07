@@ -13,6 +13,7 @@ import com.bharathkalyans.todolist.data.models.ToDoData
 import com.bharathkalyans.todolist.data.viewmodel.ToDoViewModel
 import com.bharathkalyans.todolist.fragments.SharedViewModel
 import kotlinx.android.synthetic.main.fragment_add.*
+import kotlinx.android.synthetic.main.fragment_add.view.*
 
 
 class AddFragment : Fragment() {
@@ -29,7 +30,10 @@ class AddFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_add, container, false)
 
+        //Set Options Menu
         setHasOptionsMenu(true)
+
+        view.priorities_spinner.onItemSelectedListener = mSharedViewModel.listener
 
         return view
     }
