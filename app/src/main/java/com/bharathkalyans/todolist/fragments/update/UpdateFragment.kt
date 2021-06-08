@@ -1,5 +1,6 @@
 package com.bharathkalyans.todolist.fragments.update
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
@@ -8,7 +9,6 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bharathkalyans.todolist.R
-import com.bharathkalyans.todolist.data.models.Priority
 import com.bharathkalyans.todolist.data.models.ToDoData
 import com.bharathkalyans.todolist.data.viewmodel.ToDoViewModel
 import com.bharathkalyans.todolist.fragments.SharedViewModel
@@ -40,14 +40,15 @@ class UpdateFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.menu_save) {
-            updateItem()
-        } else if (item.itemId == R.id.menu_delete) {
-            deleteItem()
+        when (item.itemId) {
+            R.id.menu_save -> updateItem()
+            R.id.menu_delete -> confirmItemRemoval()
         }
+
         return super.onOptionsItemSelected(item)
     }
 
+    //Updating the Data.
     private fun updateItem() {
         val title = current_title_et.text.toString()
         val description = current_description_et.text.toString()
@@ -76,9 +77,24 @@ class UpdateFragment : Fragment() {
 
     }
 
-    private fun deleteItem() {
-        TODO("Not yet implemented")
+    //Confirming to Delete the Data
+    private fun confirmItemRemoval() {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setPositiveButton("Yes") { _, _ ->
+            mToDoViewModel.deleteData(args.currentItem)
+            Toast.makeText(
+                requireContext(),
+                "Successfully removed ${args.currentItem.title}!",
+                Toast.LENGTH_SHORT
+            ).show()
+            findNavController().navigate(R.id.action_updateFragment_to_listFragment)
+        }
+        builder.setNegativeButton("No") { _, _ -> }
+        builder.setTitle("Delete ${args.currentItem.title}?")
+        builder.setMessage("Are you sure you want to delete ${args.currentItem.title}?")
+        builder.create().show()
     }
+
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
 
