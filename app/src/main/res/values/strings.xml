@@ -15,6 +15,8 @@
     <string name="save">Save</string>
     <string name="delete">Delete</string>
     <string name="about">About</string>
+    <string name="random_text">Description of A Card that is placed inside the ROW Layout of the Card!! And some random text!</string>
+    <string name="my_title">My Title</string>
 
     <!--    For Spinner Values we have to use String Array!-->
     <string-array name="priorities">
