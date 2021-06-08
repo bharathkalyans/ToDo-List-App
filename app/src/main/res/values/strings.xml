@@ -17,6 +17,7 @@
     <string name="about">About</string>
     <string name="random_text">Description of A Card that is placed inside the ROW Layout of the Card!! And some random text!</string>
     <string name="my_title">My Title</string>
+    <string name="made_by_bharath_kalyan_s">Made by Bharath Kalyan S</string>
 
     <!--    For Spinner Values we have to use String Array!-->
     <string-array name="priorities">

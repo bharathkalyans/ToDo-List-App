@@ -90,8 +90,8 @@ class UpdateFragment : Fragment() {
             findNavController().navigate(R.id.action_updateFragment_to_listFragment)
         }
         builder.setNegativeButton("No") { _, _ -> }
-        builder.setTitle("Delete ${args.currentItem.title}?")
-        builder.setMessage("Are you sure you want to delete ${args.currentItem.title}?")
+        builder.setTitle("Delete `${args.currentItem.title}`?")
+        builder.setMessage("Are you sure you want to delete `${args.currentItem.title}`?")
         builder.create().show()
     }
 

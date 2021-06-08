@@ -35,7 +35,7 @@
         android:title="@string/delete_all"
         app:showAsAction="never" />
     <item
-        android:id="@+id/About"
+        android:id="@+id/menu_about"
         android:title="@string/about" />
 
 
