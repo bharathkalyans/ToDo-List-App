@@ -1,10 +1,12 @@
 package com.bharathkalyans.todolist.fragments
 
 import android.view.View
+import android.widget.Spinner
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.findNavController
 import com.bharathkalyans.todolist.R
+import com.bharathkalyans.todolist.data.models.Priority
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class BindingAdapters {
@@ -27,10 +29,26 @@ class BindingAdapters {
         fun emptyDatabase(view: View, emptyDatabase: MutableLiveData<Boolean>) {
             when (emptyDatabase.value) {
                 true -> view.visibility = View.VISIBLE
-                false ->view.visibility = View.INVISIBLE
+                false -> view.visibility = View.INVISIBLE
             }
         }
 
+
+        @BindingAdapter("android:parsePriorityToInt")
+        @JvmStatic
+        fun parsePriorityToInt(view: Spinner, priority: Priority) {
+            when (priority) {
+                Priority.HIGH -> {
+                    view.setSelection(0)
+                }
+                Priority.MEDIUM -> {
+                    view.setSelection(1)
+                }
+                Priority.LOW -> {
+                    view.setSelection(2)
+                }
+            }
+        }
 
     }
 
