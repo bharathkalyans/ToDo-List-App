@@ -1,22 +1,16 @@
-package com.bharathkalyans.todolist.fragments.list
+package com.bharathkalyans.todolist.fragments.list.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.bharathkalyans.todolist.R
-import com.bharathkalyans.todolist.data.models.Priority
 import com.bharathkalyans.todolist.data.models.ToDoData
 import com.bharathkalyans.todolist.databinding.RowLayoutBinding
-import kotlinx.android.synthetic.main.row_layout.view.*
 
 
 class ListAdapter : RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
 
 
-    private var dataList = emptyList<ToDoData>()
+    var dataList = emptyList<ToDoData>()
 
 
     class MyViewHolder(private val binding: RowLayoutBinding) :
