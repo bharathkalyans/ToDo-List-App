@@ -74,8 +74,6 @@ dependencies {
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.3"
 
 
-    //DataBinding
-    kapt "com.android.databinding:compiler:3.2.0-alpha10"
 
 
 //   Recycler View Animator 3rd Party Library for Animation!

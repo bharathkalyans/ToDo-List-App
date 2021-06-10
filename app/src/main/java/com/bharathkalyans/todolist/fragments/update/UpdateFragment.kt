@@ -25,7 +25,6 @@ class UpdateFragment : Fragment() {
     private var _binding: FragmentUpdateBinding? = null
     private val binding get() = _binding!!
 
-
     private val args by navArgs<UpdateFragmentArgs>()
 
     override fun onCreateView(
