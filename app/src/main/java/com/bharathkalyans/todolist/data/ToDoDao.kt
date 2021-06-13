@@ -27,4 +27,10 @@ interface ToDoDao {
     @Query("SELECT * FROM todo_table WHERE title LIKE :searchQuery")
     fun searchDatabase(searchQuery: String): LiveData<List<ToDoData>>
 
+    @Query("SELECT * FROM todo_table ORDER BY CASE WHEN priority LIKE 'H%' then 1 WHEN priority LIKE 'M%' then 2 WHEN priority LIKE 'L%' then 3 END")
+    fun sortByHighPriority(): LiveData<List<ToDoData>>
+
+    @Query("SELECT * FROM todo_table ORDER BY CASE WHEN priority LIKE 'L%' then 1 WHEN priority LIKE 'M%' then 2 WHEN priority LIKE 'H%' then 3 END")
+    fun sortByLowPriority(): LiveData<List<ToDoData>>
+
 }

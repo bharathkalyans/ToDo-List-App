@@ -109,6 +109,12 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener {
         when (item.itemId) {
             R.id.menu_delete_all -> confirmRemoval()
             R.id.menu_about -> findNavController().navigate(R.id.aboutFragment)
+            R.id.menu_priority_high -> mToDoViewModel.sortByHighPriority.observe(this, {
+                adapter.setData(it)
+            })
+            R.id.menu_priority_low -> mToDoViewModel.sortByLowPriority.observe(this, {
+                adapter.setData(it)
+            })
         }
         return super.onOptionsItemSelected(item)
     }
