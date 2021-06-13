@@ -77,7 +77,6 @@ dependencies {
 
 
 //   Recycler View Animator 3rd Party Library for Animation!
-    //implementation "jp.wasabeef:recyclerview-animator:3.0.0"
-
+    implementation 'jp.wasabeef:recyclerview-animators:4.0.2'
 
 }

@@ -17,6 +17,7 @@ import com.bharathkalyans.todolist.databinding.FragmentListBinding
 import com.bharathkalyans.todolist.fragments.SharedViewModel
 import com.bharathkalyans.todolist.fragments.list.adapter.ListAdapter
 import com.google.android.material.snackbar.Snackbar
+import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
 
 class ListFragment : Fragment() {
 
@@ -59,6 +60,12 @@ class ListFragment : Fragment() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireActivity())
 
+        //Adding Animations to the Recycler View!
+        recyclerView.itemAnimator = SlideInUpAnimator().apply {
+            addDuration = 300
+
+        }
+
         //Swipe to delete
         swipeToDelete(recyclerView)
     }
@@ -70,12 +77,8 @@ class ListFragment : Fragment() {
 
                 //Delete Item!
                 mToDoViewModel.deleteData(deletedItem)
+
                 adapter.notifyItemRemoved(viewHolder.adapterPosition)
-//                Toast.makeText(
-//                    requireContext(),
-//                    "Successfully Deleted ${deletedItem.title} 😄",
-//                    Toast.LENGTH_SHORT
-//                ).show()
 
                 //Restoring the Deleted Data!
                 restoreDeletedData(viewHolder.itemView, deletedItem, viewHolder.adapterPosition)
